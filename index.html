@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Miguel Cardoso Mota | Portfólio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0e0f;
+      --surface: #1a1a1c;
+      --border: #2e2e30;
+      --accent: #c8f135;
+      --accent2: #7b61ff;
+      --text: #f0ede6;
+      --muted: #888884;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 4rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span { color: var(--accent); }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    .nav-links { display: flex; gap: 2rem; }
+
+    header {
+      padding: 8rem 4rem 6rem;
+      max-width: 900px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 .highlight {
+      color: transparent;
+      -webkit-text-stroke: 1px var(--accent);
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 520px;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0e0e0f;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover { background: #d9ff55; transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover { border-color: var(--muted); }
+
+    section {
+      padding: 5rem 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .card-type {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .skill-tag {
+      font-size: 0.85rem;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-box {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .stat-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer p { font-size: 0.85rem; color: var(--muted); }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header, .project-card, .stat-box {
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .project-card:nth-child(2) { animation-delay: 0.1s; }
+    .project-card:nth-child(3) { animation-delay: 0.2s; }
+    .project-card:nth-child(4) { animation-delay: 0.3s; }
+
+    @media (max-width: 700px) {
+      nav, header, section, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">SN<span>.</span></div>
+  <div class="nav-links">
+    <a href="#projetos">Projetos</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+  </div>
+</nav>
+
+<header>
+  <div class="tag">✦ Disponível para projetos</div>
+  <h1>
+    Olá, sou<br>
+    <span class="highlight">Miguel Cardoso Mota</span><br>
+    Desenvolvedor
+  </h1>
+  <p class="subtitle">
+    Estudante apaixonado por tecnologia, criando projetos acadêmicos e pessoais com foco em boas práticas de desenvolvimento.
+  </p>
+  <div class="btn-group">
+    <a href="https://github.com/Bullseye71" class="btn btn-primary" target="_blank">Ver GitHub →</a>
+    <a href="#projetos" class="btn btn-outline">Meus Projetos</a>
+  </div>
+</header>
+
+<section id="projetos">
+  <p class="section-label">// Projetos</p>
+  <h2>O que eu construí</h2>
+  <div class="projects-grid">
+
+    <a class="project-card" href="#" target="_blank">
+      <div class="card-icon">🌐</div>
+      <p class="card-type">Projeto Pessoal</p>
+      <h3>Portfólio Pessoal</h3>
+      <p>Site de portfólio criado com HTML, CSS e JavaScript puro. Versão 1.0.</p>
+    </a>
+
+    <a class="project-card" href="#" target="_blank">
+      <div class="card-icon">📚</div>
+      <p class="card-type">Projeto Acadêmico</p>
+      <h3>Projeto Acadêmico 1</h3>
+      <p>Descreva aqui seu projeto acadêmico, a linguagem usada e o objetivo.</p>
+    </a>
+
+    <a class="project-card" href="#" target="_blank">
+      <div class="card-icon">💡</div>
+      <p class="card-type">Projeto Pessoal</p>
+      <h3>Projeto Pessoal 2</h3>
+      <p>Descreva aqui outro projeto pessoal, suas funcionalidades e tecnologias.</p>
+    </a>
+
+    <a class="project-card" href="#" target="_blank">
+      <div class="card-icon">🔧</div>
+      <p class="card-type">Em desenvolvimento</p>
+      <h3>Em breve...</h3>
+      <p>Novos projetos estão sendo desenvolvidos. Acompanhe meu GitHub!</p>
+    </a>
+
+  </div>
+</section>
+
+<section id="sobre">
+  <p class="section-label">// Sobre mim</p>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2>Quem sou eu</h2>
+      <p>Sou estudante de tecnologia apaixonado por criar soluções digitais. Estou sempre aprendendo e explorando novas ferramentas e linguagens.</p>
+      <p>Meu objetivo é construir um portfólio robusto que reflita minha evolução como desenvolvedor, praticando versionamento, colaboração e boas práticas.</p>
+      <div class="skills-list" style="margin-top: 1.5rem;">
+        <span class="skill-tag">HTML</span>
+        <span class="skill-tag">CSS</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">Python</span>
+      </div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="stat-number">1.0</div>
+        <div class="stat-label">Versão atual do portfólio</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">4+</div>
+        <div class="stat-label">Projetos no repositório</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">Git</div>
+        <div class="stat-label">Versionamento com commits organizados</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Dedicação e aprendizado contínuo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <p class="section-label">// Contato</p>
+  <h2>Vamos conversar?</h2>
+  <p style="color: var(--muted); margin-bottom: 2rem; max-width: 480px; font-weight: 300;">
+    Estou aberto a conexões, colaborações e oportunidades. Me encontre nas plataformas abaixo:
+  </p>
+  <div class="btn-group">
+    <a href="https://github.com/Bullseye71" class="btn btn-primary" target="_blank">GitHub →</a>
+    <a href="https://linkedin.com/in/Bullseye71" class="btn btn-outline" target="_blank">LinkedIn</a>
+    <a href="mailto:cardosomotamiguel@gmail.com" class="btn btn-outline">E-mail</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2024 Miguel Cardoso Mota · Feito com HTML, CSS e Git</p>
+  <div class="footer-links">
+    <a href="https://github.com/Bullseye71" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/in/Bullseye71" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
